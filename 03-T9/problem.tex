@@ -48,7 +48,7 @@
 \begin{document}
 
 	{\Large
-	\textbf{Just Missed}}
+	\textbf{T9}}
 	
 	\vspace{0.4cm}
 	DiPS CodeJam 23\raisedrule[0.25em]{1pt}
@@ -56,54 +56,51 @@
 	% document
 
 	\section*{Prompt}
-	Given a number $n\geq3$, find the the smallest number $k$ such that the modular residues of $k$ by the first $n$ prime numbers belongs to the set $\{-1, 0, 1\}$.
+	T9 s a predictive text technology for mobile phones, specifically those that contain a $3 \times 4$ numeric keypad. Letters are typed by pressing corresponding keys repeatedly. For example, pressing $222, 666, 3, 33$ results in the string ``code''.
+	Given a sequence of numbers $n[]$, find the string that corresponds to $n$. Assume the following character set:
 	
-	For example, if $n=5$, the first $5$ primes are $2,3,5,7,11$. This means that $k\in[10,\infty)$.
-	\begin{itemize}
-		\item $10\pmod7=3$, move on to the next number
-		\item $11\pmod7=4$, move on to the next number
-		\item $12\pmod5=2$, move on to the next number
-		\item $13\pmod5=3$, move on to the next number
-		\item $14\pmod11=3$, move on to the next number
-		\item $15\pmod11=4$, move on to the next number
-		\item $16\pmod7=2$, move on to the next number
-		\item $17\pmod5=2$, move on to the next number
-		\item $18\pmod5=3$, move on to the next number
-		\item $19\pmod7=7$, move on to the next number
-		\item $20\pmod11=9$, move on to the next number
-		\item $21$:
-		\begin{itemize}
-			\item $21\pmod2=1$
-			\item $21\pmod3=0$
-			\item $21\pmod5=1$
-			\item $21\pmod7=0$
-			\item $21\pmod11=-1$
-		\end{itemize}
-	\end{itemize}
-	
-	Therefore, $k=21$.
+	\begin{tabular}{ c c } 
+	 	\textbf{Key} & \textbf{Character}\\
+		\hline
+		1 & -- \\
+		2 & abc \\
+		3 & def \\
+		4 & ghi \\
+		5 & jkl \\
+		6 & mno \\
+		7 & pqrs \\
+		8 & tuv \\
+		9 & wxyz \\
+		0 & \textvisiblespace \\
+	\end{tabular}
 
 	\subsection*{Input Format}
-	The first and only line of input contains $n$.
+	The first and only line of input contains a space-separated list of presses.
 
 	\subsection*{Output Format}
-	Your output should consist of one line that contains the number $k$.
+	Your output should contain one line that contains the resultant string.
 
 	\subsection*{Constraints}
-	$n\geq3$
+	$1\leq n \leq10^5$
 
 	\subsection*{Sample Input/Output}
 	\begin{tabular}{ |l|l| } 
 		\hline
 		\textbf{Input} & \textbf{Output} \\
-		{\lstinputlisting{./testCases/input/input5.txt}} & {\lstinputlisting{./testCases/output/output5.txt}} \\ % use {\lstinputlisting{./testCases/input/input00.txt}} & {\lstinputlisting{./testCases/output/output00.txt}}
+		{\lstinputlisting{./testCases/input/input00.txt}} & {\lstinputlisting{./testCases/output/output00.txt}} \\ % use {\lstinputlisting{./testCases/input/input00.txt}} & {\lstinputlisting{./testCases/output/output00.txt}}
 		\hline
 	\end{tabular}
 
 
 	\section*{Solution}
-	Refer to the example given.
-
+	Analysing the input $n[222, 666, 3, 33]$, we can translate the input into characters. For example:
+	
+	$222$:
+	\begin{itemize}
+		\item $2$ corresponds to the character set ``abc''.
+		\item The digit is repeated 3 times, referring to the 3rd character in the sequence.
+		\item Return $\text{``abc''}[2]=\text{c}$
+	\end{itemize}
 
 
 	\section*{Sample Program}

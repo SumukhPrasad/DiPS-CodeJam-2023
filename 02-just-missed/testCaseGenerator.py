@@ -46,11 +46,11 @@ for i in range(0, 5):
 	while checkModulos(k, primes)==False:
 		k+=1
 	
-	inputFile = open(f'./testCases/input/input{n}.txt', 'a')
+	inputFile = open(f'./testCases/input/input{nthCase}.txt', 'a')
 	inputFile.write(f'{n}')
 	inputFile.close()
      
-	outputFile = open(f'./testCases/output/output{n}.txt', 'a')
+	outputFile = open(f'./testCases/output/output{nthCase}.txt', 'a')
 	outputFile.write(f'{k}')
 	outputFile.close()
 
