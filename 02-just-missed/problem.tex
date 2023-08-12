@@ -1,0 +1,116 @@
+\documentclass[12pt]{report}
+\usepackage[a4paper, total={7.3in, 9.7in}]{geometry}
+\usepackage{amsmath}
+\usepackage{upquote}
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage{titlesec}
+\usepackage{amssymb}
+
+\definecolor{backgroundcolor}{rgb}{1, 1, 1}
+\definecolor{commentstyle}{rgb}{0.365, 0.422, 0.475}
+\definecolor{keywordstyle}{rgb}{0.6, 0.14, 0.576}
+\definecolor{numberstyle}{rgb}{0.5, 0.5, 0.5}
+\definecolor{stringstyle}{rgb}{0.77, 0.1, 0.08}
+
+\lstdefinestyle{xcodecolor}{
+    backgroundcolor=\color{backgroundcolor},   
+    commentstyle=\color{commentstyle},
+    keywordstyle=\color{keywordstyle},
+    numberstyle=\scriptsize\color{numberstyle},
+    stringstyle=\color{stringstyle},
+    basicstyle=\ttfamily\footnotesize,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                   
+    numbersep=5pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=2
+}
+
+\lstset{style=xcodecolor}
+
+\usepackage[T1]{fontenc}
+\usepackage{cascadia-code}
+
+% Raised Rule Command:
+%  Arg 1 (Optional) - How high to raise the rule
+%  Arg 2            - Thickness of the rule
+\newcommand{\raisedrule}[2][0em]{\leaders\hbox{\rule[#1]{1pt}{#2}}\hfill}
+
+\setlength{\parindent}{0pt}
+\titleformat{\section}
+{\normalfont\Large\bfseries}{\thesection}{1em}{}[{\titlerule[0.8pt]}]
+
+\begin{document}
+
+	{\Large
+	\textbf{Just Missed}}
+	
+	\vspace{0.4cm}
+	DiPS CodeJam 23\raisedrule[0.25em]{1pt}
+	\\
+	% document
+
+	\section*{Prompt}
+	Given a number $n\geq3$, find the the smallest number $k$ such that the modular residues of $k$ by the first $n$ prime numbers belongs to the set $\{-1, 0, 1\}$.
+	
+	For example, if $n=5$, the first $5$ primes are $2,3,5,7,11$. This means that $k\in[10,\infinity)$.
+	\begin{itemise}
+		\item $10\pmod7=3$, move on to the next number
+		\item $11\pmod7=4$, move on to the next number
+		\item $12\pmod5=2$, move on to the next number
+		\item $13\pmod5=3$, move on to the next number
+		\item $14\pmod11=3$, move on to the next number
+		\item $15\pmod11=4$, move on to the next number
+		\item $16\pmod7=2$, move on to the next number
+		\item $17\pmod5=2$, move on to the next number
+		\item $18\pmod5=3$, move on to the next number
+		\item $19\pmod7=7$, move on to the next number
+		\item $20\pmod11=9$, move on to the next number
+		\item $21$:
+		\begin{itemise}
+			\item $21\pmod2=1$
+			\item $21\pmod3=0$
+			\item $21\pmod5=1$
+			\item $21\pmod7=0$
+			\item $21\pmod11=-1$
+		\end{itemise}
+	\end{itemise}
+	
+	Therefore, $k=21$.
+
+	\subsection*{Input Format}
+	The first and only line of input contains $n$.
+
+	\subsection*{Output Format}
+	Your output should consist of one line that contains the number $k$.
+
+	\subsection*{Constraints}
+	$n\geq3$
+
+	\subsection*{Sample Input/Output}
+	\begin{tabular}{ |l|l| } 
+		\hline
+		\textbf{Input} & \textbf{Output} \\
+		{Sample input} & {Sample output} \\ % use {\lstinputlisting{./testCases/input/input00.txt}} & {\lstinputlisting{./testCases/output/output00.txt}}
+		\hline
+	\end{tabular}
+
+
+	\section*{Solution}
+
+
+	\subsection*{Simplifying the Problem}
+
+	\subsection*{Solving the Problem}
+
+
+	\section*{Sample Program}
+	\lstinputlisting[language=Python]{sampleSolution.py}
+	
+
+\end{document}
