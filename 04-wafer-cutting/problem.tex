@@ -1,0 +1,109 @@
+\documentclass[12pt]{report}
+\usepackage[a4paper, total={7.3in, 9.7in}]{geometry}
+\usepackage{amsmath}
+\usepackage{upquote}
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage{titlesec}
+\usepackage{amssymb}
+
+\definecolor{backgroundcolor}{rgb}{1, 1, 1}
+\definecolor{commentstyle}{rgb}{0.365, 0.422, 0.475}
+\definecolor{keywordstyle}{rgb}{0.6, 0.14, 0.576}
+\definecolor{numberstyle}{rgb}{0.5, 0.5, 0.5}
+\definecolor{stringstyle}{rgb}{0.77, 0.1, 0.08}
+
+\lstdefinestyle{xcodecolor}{
+    backgroundcolor=\color{backgroundcolor},   
+    commentstyle=\color{commentstyle},
+    keywordstyle=\color{keywordstyle},
+    numberstyle=\scriptsize\color{numberstyle},
+    stringstyle=\color{stringstyle},
+    basicstyle=\ttfamily\footnotesize,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                   
+    numbersep=5pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=2
+}
+
+\lstset{style=xcodecolor}
+
+\usepackage[T1]{fontenc}
+\usepackage{cascadia-code}
+
+% Raised Rule Command:
+%  Arg 1 (Optional) - How high to raise the rule
+%  Arg 2            - Thickness of the rule
+\newcommand{\raisedrule}[2][0em]{\leaders\hbox{\rule[#1]{1pt}{#2}}\hfill}
+
+\setlength{\parindent}{0pt}
+\titleformat{\section}
+{\normalfont\Large\bfseries}{\thesection}{1em}{}[{\titlerule[0.8pt]}]
+
+\begin{document}
+
+	{\Large
+	\textbf{Wafer Cutting}}
+	
+	\vspace{0.4cm}
+	DiPS CodeJam 23\raisedrule[0.25em]{1pt}
+	\\
+	% document
+
+	\section*{Prompt}
+	When manufacturing chips, circular silicon wafers are cut into dies of required size. The goal of this challenge is to maximise the number of whole dies of dimensions $l_x, l_y$ that can be cut from a wafer of a given diameter $d$. Your task is to find the maximum number of dies that can be cut from a wafer.
+	
+	The machine measures a distance $g_x$ from the left edge, and makes a vertical cut. Then it makes the needed number of additional vertical cuts, with spacing of the needed width. It makes the horizontal cuts in the same way: first one at a distance $g_y$, and then with spacing of height.
+
+	The material remains perfectly still during the cutting: it's not allowed to move some slices of material before making the perpendicular cuts.
+
+	The machine has a stepper motor that works at absolute accuracy but can only go integer-sized distances.
+
+
+	\subsection*{Input Format}
+	\begin{itemize}
+		\item The first line of the input contains one integer $d$ that denotes the diameter of the wafer.
+		\item The second line contains 2 space-separated integers $l_x$ and $l_y$ that denote the width and height of one die respectively.
+	\end{itemize}
+
+	\subsection*{Output Format}
+	Your output should contain a single integer $w$ denoting the maximum number of dies that can be cut.
+
+	\subsection*{Constraints}
+	$0 < d \leq 450$
+
+	\subsection*{Sample Input/Output}
+	\begin{tabular}{ |l|l| } 
+		\hline
+		\textbf{Input} & \textbf{Output} \\
+		{\lstinputlisting{./testCases/input/input00.txt}} & {\lstinputlisting{./testCases/output/output00.txt}} \\ % use {\lstinputlisting{./testCases/input/input00.txt}} & {\lstinputlisting{./testCases/output/output00.txt}}
+		\hline
+	\end{tabular}
+
+
+	\section*{Solution}
+	The challenge can be solved as follows:
+	\begin{itemize}
+		\item For each possible $g_x$ value:
+		\begin{itemize}
+			\item For each possible $g_y$ value:
+			\begin{itemize}
+				\item Assume the starting die count value is 0.
+				\item For every die position, check if the die fits on the board.
+				\item If the die fits, increment the die count.
+			\end{itemize}
+			\item If the current die count is greater than the greatest die count obtained previously, update the maximum value.
+		\end{itemize}
+	\end{itemize}
+
+
+	\section*{Sample Program}
+	\lstinputlisting[language=Python]{sampleSolution.py}
+	
+
+\end{document}
