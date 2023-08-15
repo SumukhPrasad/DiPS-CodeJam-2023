@@ -9,6 +9,7 @@ newGrid = grid.copy()
 
 def safeCell(i, j):
 	try:
+		assert i>-1 and j>-1 # prevent back-indexes
 		return grid[i][j]
 	except:
 		return 0

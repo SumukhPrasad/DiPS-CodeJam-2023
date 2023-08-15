@@ -51,7 +51,7 @@ for i in range(0, 20):
 		inputGrid+="\n"
 
 	inputFile = open(f'./testCases/input/input{nthCase}.txt', 'a')
-	inputFile.write(f"{inputGrid}")
+	inputFile.write(f"{n}\n{inputGrid}")
 	inputFile.close()
      
 	outputFile = open(f'./testCases/output/output{nthCase}.txt', 'a')
