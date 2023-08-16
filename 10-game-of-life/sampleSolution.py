@@ -3,9 +3,9 @@ n=int(input())
 grid=[]
 
 for i in range(n):
-	grid.append(list(map(int, input().strip().split())))
+	grid.append( list(map(int, input().strip().split())) )
 	
-newGrid = grid.copy()
+newGrid = [[grid[i][j] for j in range(n)] for i in range(n)]
 
 def safeCell(i, j):
 	try:
@@ -29,8 +29,8 @@ for i in range(n):
 		]
 		for cell in cells_to_check:
 			total+=safeCell(cell[0], cell[1])
-			
-		if grid[i][j]  == 1:
+		
+		if safeCell(i, j):
 			if (total < 2) or (total > 3):
 				newGrid[i][j] = 0
 		else:
